@@ -14,9 +14,9 @@ public class LoginServiceImpl implements LoginService {
     UserRepo userRepo;
 
     @Override
-    public BasicResponse userLogin(String openId){
+    public BasicResponse userLogin(String openId, String username){
         if (!userRepo.existsById(openId)){
-            userRepo.save(new User());
+            userRepo.save(new User(openId, username));
         }
         return new BasicResponse(true, openId);
     }

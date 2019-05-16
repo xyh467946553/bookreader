@@ -99,9 +99,8 @@ public class User {
     public User() {
     }
 
-    public User(String openId, String username, String bookIds) {
+    public User(String openId, String username) {
         this.openId = openId;
         this.username = username;
-        this.bookIds = bookIds;
     }
 }

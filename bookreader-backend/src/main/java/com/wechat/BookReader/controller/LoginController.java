@@ -29,11 +29,11 @@ public class LoginController {
 
     @PostMapping(value = "/userLogin")
     public BasicResponse userLogin(@RequestBody UserLoginParam param){
-        String openId = getOpenId(param.getWx_id());
+        String openId = getOpenId(param.getCode());
         if(openId.equals("")){
             return new BasicResponse(false,"获取openId发生异常！");
         }
-        return loginService.userLogin(openId);
+        return loginService.userLogin(openId, param.getUsername());
     }
 
     private String getOpenId(String code){

@@ -23,31 +23,40 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookSimpleInfoVO[] getBooks(){
-        List<Book> list = bookRepo.findAll();
+        List<Book> books = bookRepo.findAll();
 
-        BookSimpleInfoVO[] books = new BookSimpleInfoVO[list.size()];
+        BookSimpleInfoVO[] list = new BookSimpleInfoVO[books.size()];
 
-        for (int i = 0; i < list.size(); i ++){
-            Book book = list.get(i);
-            BookSimpleInfoVO bookSimpleInfoVO = new BookSimpleInfoVO(book.getBookId(), book.getName(), book.getWriter(), book.getSummary(), book.getPostUrl());
-            books[i] = bookSimpleInfoVO;
+        for (int i = 0; i < books.size(); i ++){
+            Book book = books.get(i);
+            BookSimpleInfoVO bookSimpleInfoVO = new BookSimpleInfoVO(book.getBookId(),
+                    book.getName(),
+                    book.getWriter(),
+                    book.getSummary(),
+                    book.getPostUrl());
+            list[i] = bookSimpleInfoVO;
         }
 
-        return books;
+        return list;
     }
 
     public BookInfoVO getBookInfo(int bookId){
         if (bookRepo.existsById(bookId)){
             Book book = bookRepo.findById(bookId).get();
-            BookInfoVO bookInfoVO = new BookInfoVO(book.getBookId(), book.getName(), book.getWriter(), book.getSummary(), book.getPostUrl(), book.getStar());
+            BookInfoVO bookInfo = new BookInfoVO(book.getBookId(),
+                    book.getName(),
+                    book.getWriter(),
+                    book.getSummary(),
+                    book.getPostUrl(),
+                    book.getStar());
 
             List<Comment> list = commentRepo.findByBookId(bookId);
             Comment[] comments = new Comment[list.size()];
             for (int i = 0; i < list.size(); i ++){
                 comments[i] = list.get(i);
             }
-            bookInfoVO.setComments(comments);
-            return bookInfoVO;
+            bookInfo.setComments(comments);
+            return bookInfo;
         }
         return null;
     }

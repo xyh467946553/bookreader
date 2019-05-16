@@ -4,9 +4,10 @@ import com.wechat.BookReader.response.BasicResponse;
 
 public interface LoginService {
     /**
-     * 用户登录
-     * @param code
+     * 用户登陆
+     * @param openId
+     * @param userName
      * @return
      */
-    BasicResponse userLogin(String code);
+    BasicResponse userLogin(String openId, String userName);
 }

@@ -1,6 +1,6 @@
 package com.wechat.BookReader.parameter;
 
-public class AddBookToShellParam {
+public class UpdateBookofShelfParam {
     private int bookId = 0;
     private String  openId = "";
 
@@ -20,10 +20,10 @@ public class AddBookToShellParam {
         this.openId = openId;
     }
 
-    public AddBookToShellParam() {
+    public UpdateBookofShelfParam() {
     }
 
-    public AddBookToShellParam(int bookId, String openId) {
+    public UpdateBookofShelfParam(int bookId, String openId) {
         this.bookId = bookId;
         this.openId = openId;
     }

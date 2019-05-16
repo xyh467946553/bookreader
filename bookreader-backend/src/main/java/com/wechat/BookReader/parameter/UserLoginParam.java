@@ -1,20 +1,31 @@
 package com.wechat.BookReader.parameter;
 
 public class UserLoginParam {
-    private String wx_id = "";
+    private String code = "";
 
-    public String getWx_id() {
-        return wx_id;
+    private String username = "";
+
+    public String getCode() {
+        return code;
     }
 
-    public void setWx_id(String wx_id) {
-        this.wx_id = wx_id;
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public UserLoginParam() {
     }
 
-    public UserLoginParam(String wx_id) {
-        this.wx_id = wx_id;
+    public UserLoginParam(String code, String username) {
+        this.code = code;
+        this.username = username;
     }
 }

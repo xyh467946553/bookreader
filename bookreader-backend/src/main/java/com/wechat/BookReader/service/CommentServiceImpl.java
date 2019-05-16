@@ -15,7 +15,10 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public BasicResponse setComment(String username, int bookId, String comment){
-        commentRepo.save(new Comment((int)commentRepo.count() + 1, comment, username, bookId));
+        commentRepo.save(new Comment((int)commentRepo.count() + 1,
+                comment,
+                username,
+                bookId));
         return new BasicResponse(true, "");
     }
 }
