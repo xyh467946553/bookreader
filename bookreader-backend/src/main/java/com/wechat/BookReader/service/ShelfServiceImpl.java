@@ -24,13 +24,16 @@ public class ShelfServiceImpl implements ShelfSerivice {
 
     @Override
     public BasicResponse addBookToShelf(int bookId, String openId){
-        if (!userRepo.existsById(openId)){
+        if (userRepo.existsById(openId)){
             User user = userRepo.findById(openId).get();
-            user.addBook(bookId);
-            userRepo.save(user);
+            if(user.addBook(bookId)) {
+                userRepo.save(user);
+            }else {
+                return new BasicResponse(false, "该书已被收藏！");
+            }
             return new BasicResponse(true, "");
         }
-        return new BasicResponse(false, "");
+        return new BasicResponse(false, "该用户不存在！");
     }
 
     @Override

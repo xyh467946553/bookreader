@@ -55,10 +55,10 @@ public class User {
     }
 
     public boolean addBook(int bookId){
+        stringToBookIdList();
         if(bookIdList.contains(bookId)){
             return false;
         }
-        stringToBookIdList();
         bookIdList.add(bookId);
         bookIds = bookIdListToString();
         return true;
