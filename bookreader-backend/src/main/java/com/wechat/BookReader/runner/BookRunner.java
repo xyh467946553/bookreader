@@ -22,7 +22,6 @@ public class BookRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("!!");
         Book book = new Book(1,
                 "计算机网络",
                 "谢希仁",

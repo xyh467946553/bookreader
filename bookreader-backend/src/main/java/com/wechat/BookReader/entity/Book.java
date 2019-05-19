@@ -102,6 +102,7 @@ public class Book {
                 name,
                 writer,
                 summary,
+                content,
                 postUrl,
                 star);
     }

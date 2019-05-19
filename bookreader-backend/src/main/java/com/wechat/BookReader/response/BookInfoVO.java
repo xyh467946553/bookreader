@@ -7,6 +7,7 @@ public class BookInfoVO {
     private String name = "";
     private String writer = "";
     private String summary = "";
+    private String content = "";
     private String postUrl = "";
     private double star = 0;
     private Comment[] comments;
@@ -43,6 +44,14 @@ public class BookInfoVO {
         this.summary = summary;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     public String getPostUrl() {
         return postUrl;
     }
@@ -74,12 +83,14 @@ public class BookInfoVO {
                       String name,
                       String writer,
                       String summary,
+                      String content,
                       String postUrl,
                       double star) {
         this.bookId = bookId;
         this.name = name;
         this.writer = writer;
         this.summary = summary;
+        this.content = content;
         this.postUrl = postUrl;
         this.star = star;
     }
