@@ -25,4 +25,13 @@ public interface ShelfSerivice {
      * @return
      */
     BookSimpleInfoVO[] getShelf(String openId);
+
+    /**
+     *
+     * 返回这本书有没有被收藏过
+     * @param openId
+     * @param bookId
+     * @return
+     */
+    BasicResponse getMark(String openId, int bookId);
 }

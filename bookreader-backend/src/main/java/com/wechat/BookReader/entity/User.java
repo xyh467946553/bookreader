@@ -47,6 +47,7 @@ public class User {
     }
 
     public ArrayList<Integer> getBookIdList() {
+        stringToBookIdList();
         return bookIdList;
     }
 

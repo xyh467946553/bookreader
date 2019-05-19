@@ -28,4 +28,9 @@ public class ShelfController {
     public BookSimpleInfoVO[] getShelf(@RequestParam(value="openId") String openId){
         return shelfSerivice.getShelf(openId);
     }
+
+    @GetMapping(value = "/getMark")
+    public BasicResponse getMark(@RequestParam(value="openId") String openId, @RequestParam(value="bookId") int bookId){
+        return shelfSerivice.getMark(openId,bookId);
+    }
 }

@@ -72,4 +72,20 @@ public class ShelfServiceImpl implements ShelfSerivice {
         }
         return new BookSimpleInfoVO[0];
     }
+
+    @Override
+    public BasicResponse getMark(String openId, int bookId){
+        User user = null;
+        if(userRepo.findById(openId).isPresent()){
+            user = userRepo.findById(openId).get();
+            List<Integer> bookIdList = user.getBookIdList();
+            if(bookIdList.contains(bookId)){
+                return new BasicResponse(true,"");
+            }else {
+                return new BasicResponse(false,"");
+            }
+        }else {
+            return new BasicResponse(false,"未找到该用户！");
+        }
+    }
 }
