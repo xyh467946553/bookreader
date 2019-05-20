@@ -40,9 +40,12 @@ public class ShelfServiceImpl implements ShelfSerivice {
     public BasicResponse deleteBookFromShelf(int bookId, String openId) {
         if (userRepo.existsById(openId)){
             User user = userRepo.findById(openId).get();
-            user.deleteBook(bookId);
-            userRepo.save(user);
-            return new BasicResponse(true, "");
+            if(user.deleteBook(bookId)) {
+                userRepo.save(user);
+                return new BasicResponse(true, "");
+            }else {
+                return new BasicResponse(false, "该书未被收藏");
+            }
         }
         return new BasicResponse(false, "");
     }

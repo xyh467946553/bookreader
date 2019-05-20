@@ -66,8 +66,8 @@ public class User {
     }
 
     public boolean deleteBook(int bookId){
+        stringToBookIdList();
         if(bookIdList.contains(bookId)) {
-            stringToBookIdList();
             bookIdList.remove((Integer) bookId);
             bookIds = bookIdListToString();
             return true;
