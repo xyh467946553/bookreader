@@ -21,6 +21,9 @@ public class Comment {
     @Column
     private int bookId = 0;
 
+    @Column
+    private String time = "";
+
     public int getCommentId() {
         return commentId;
     }
@@ -53,13 +56,22 @@ public class Comment {
         this.bookId = bookId;
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     public Comment() {
     }
 
-    public Comment(int commentId, String comment, String username, int bookId) {
+    public Comment(int commentId, String comment, String username, int bookId,String time) {
         this.commentId = commentId;
         this.comment = comment;
         this.username = username;
         this.bookId = bookId;
+        this.time = time;
     }
 }
