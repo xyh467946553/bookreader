@@ -24,6 +24,9 @@ public class Comment {
     @Column
     private String time = "";
 
+    @Column
+    private double star = 0;
+
     public int getCommentId() {
         return commentId;
     }
@@ -64,14 +67,23 @@ public class Comment {
         this.time = time;
     }
 
+    public double getStar() {
+        return star;
+    }
+
+    public void setStar(double star) {
+        this.star = star;
+    }
+
     public Comment() {
     }
 
-    public Comment(int commentId, String comment, String username, int bookId,String time) {
+    public Comment(int commentId, String comment, String username, int bookId,String time,double star) {
         this.commentId = commentId;
         this.comment = comment;
         this.username = username;
         this.bookId = bookId;
         this.time = time;
+        this.star = star;
     }
 }

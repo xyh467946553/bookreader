@@ -15,6 +15,6 @@ public class CommentController {
 
     @PostMapping(value = "/setComment")
     public BasicResponse setComment(@RequestBody CommentParam param){
-        return commentService.setComment(param.getUsername(),param.getBookId(),param.getComment());
+        return commentService.setComment(param.getUsername(),param.getBookId(),param.getComment(),param.getStar());
     }
 }

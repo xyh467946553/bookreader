@@ -10,5 +10,5 @@ public interface CommentService {
      * @param comment
      * @return
      */
-    BasicResponse setComment(String username, int bookId, String comment);
+    BasicResponse setComment(String username, int bookId, String comment,double star);
 }
