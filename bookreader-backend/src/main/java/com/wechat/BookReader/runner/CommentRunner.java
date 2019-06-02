@@ -1,7 +1,7 @@
 package com.wechat.BookReader.runner;
 
-import com.wechat.BookReader.dao.BookRepo;
-import com.wechat.BookReader.entity.Book;
+import com.wechat.BookReader.dao.CommentRepo;
+import com.wechat.BookReader.entity.Comment;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -17,16 +17,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-/**
- * @Author: Disclover
- * @Date: 2019/5/18 13:21
- */
-
 @Component
-@Order(value = 1)
-public class BookRunner implements ApplicationRunner {
+@Order(value = 2)
+public class CommentRunner implements ApplicationRunner {
     @Autowired
-    private BookRepo bookRepo;
+    private CommentRepo commentRepo;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -37,7 +32,7 @@ public class BookRunner implements ApplicationRunner {
                 + separator + "com"
                 + separator + "wechat"
                 + separator + "BookReader"
-                + separator + "book.xlsx";
+                + separator + "comment.xlsx";
         File file = new File(path);
         Workbook workbook = null;
         try {
@@ -50,8 +45,8 @@ public class BookRunner implements ApplicationRunner {
         int rowNum = sheet.getLastRowNum();
         for (int i = 1; i <= rowNum; i++) {
             Row row = sheet.getRow(i);
-            String[] temp = new String[7];
-            for (int index = 0; index < 7; index++) {
+            String[] temp = new String[6];
+            for (int index = 0; index < 6; index++) {
                 try {
                     row.getCell(index).setCellType(CellType.STRING);
                     temp[index] = row.getCell(index).getStringCellValue();
@@ -60,14 +55,13 @@ public class BookRunner implements ApplicationRunner {
                 }
             }
             int id = Integer.valueOf(temp[0]);
-            String content = temp[1];
-            String name = temp[2];
-            String postUrl = temp[3];
-            double star = Double.valueOf(temp[4]);
-            String summary = temp[5];
-            String writer = temp[6];
-            Book book = new Book(id,name,writer,summary,content,postUrl,star);
-            bookRepo.save(book);
+            int bookId = Integer.valueOf(temp[1]);
+            String comment = temp[2];
+            double star = Double.valueOf(temp[3]);
+            String time = temp[4];
+            String username = temp[5];
+            Comment comment1 = new Comment(id,comment,username,bookId,time,star);
+            commentRepo.save(comment1);
         }
     }
 }

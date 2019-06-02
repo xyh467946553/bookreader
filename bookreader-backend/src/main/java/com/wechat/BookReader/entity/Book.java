@@ -21,10 +21,10 @@ public class Book {
     @Column
     private String writer = "";
 
-    @Column
+    @Column(columnDefinition="text")
     private String summary = "";
 
-    @Column
+    @Column(columnDefinition="text")
     private String content = "";
 
     @Column

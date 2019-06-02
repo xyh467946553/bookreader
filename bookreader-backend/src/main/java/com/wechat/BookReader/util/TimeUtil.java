@@ -9,7 +9,7 @@ public class TimeUtil {
      * @return
      */
     public static String getNowTime(){
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String nowTime = df.format(new Date());
         return nowTime;
     }
