@@ -17,6 +17,7 @@ public class UserRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         User user = new User("test","test");
+        user.setBookIds("1");
         userRepo.save(user);
     }
 }
